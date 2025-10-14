@@ -4,6 +4,9 @@ project(autoware_behavior_velocity_planner)
 find_package(autoware_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
+find_package(rosidl_default_generators REQUIRED)
+find_package(grid_map_core REQUIRED)
+
 rosidl_generate_interfaces(
   ${PROJECT_NAME}
   "srv/LoadPlugin.srv"
