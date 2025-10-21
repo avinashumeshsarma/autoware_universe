@@ -77,8 +77,10 @@ RadarThresholdFilterNode::RadarThresholdFilterNode(const rclcpp::NodeOptions & n
   node_param_.z_max = declare_parameter<double>("node_params.z_max");
 
   // Subscriber
+  // sub_radar_ = create_subscription<RadarScan>(
+  //   "~/input/radar", rclcpp::QoS{1}, std::bind(&RadarThresholdFilterNode::onData, this, _1));
   sub_radar_ = create_subscription<RadarScan>(
-    "~/input/radar", rclcpp::QoS{1}, std::bind(&RadarThresholdFilterNode::onData, this, _1));
+    "~/input/radar", rclcpp::SensorDataQoS(), std::bind(&RadarThresholdFilterNode::onData, this, _1));
 
   // Publisher
   pub_radar_ = create_publisher<RadarScan>("~/output/radar", 1);
