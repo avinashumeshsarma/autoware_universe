@@ -4,6 +4,7 @@ project(autoware_radar_static_pointcloud_filter)
 # Dependencies
 find_package(autoware_cmake REQUIRED)
 autoware_package()
+find_package(geometry_msgs REQUIRED)
 
 # Targets
 ament_auto_add_library(${PROJECT_NAME} SHARED

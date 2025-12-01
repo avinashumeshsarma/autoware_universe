@@ -17,7 +17,7 @@
   <arg name="use_multi_channel_tracker_merger"/>
 
   <!-- External interface -->
-  <let name="input/detection_input_channels" value="['detected_objects']"/>
+  <let name="input/detection_input_channels" value="['detected_objects', 'dummy_objects']"/>
   <arg name="input/radar/objects" default="/perception/object_recognition/detection/radar/far_objects"/>
   <arg name="output/objects" default="$(var ns)/objects"/>
 

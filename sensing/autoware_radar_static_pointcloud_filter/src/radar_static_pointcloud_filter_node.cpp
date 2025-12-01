@@ -18,6 +18,7 @@
 #include <geometry_msgs/msg/twist_with_covariance.hpp>
 #include <geometry_msgs/msg/vector3.hpp>
 #include <geometry_msgs/msg/vector3_stamped.hpp>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 
 #include <memory>
 #include <string>
@@ -129,14 +130,21 @@ rcl_interfaces::msg::SetParametersResult RadarStaticPointcloudFilterNode::onSetP
 void RadarStaticPointcloudFilterNode::onData(
   const RadarScan::ConstSharedPtr radar_msg, const Odometry::ConstSharedPtr odom_msg)
 {
-  geometry_msgs::msg::TransformStamped::ConstSharedPtr transform;
+  const geometry_msgs::msg::TransformStamped::ConstSharedPtr transform =
+    transform_listener_->getTransform(
+      odom_msg->header.frame_id, radar_msg->header.frame_id, radar_msg->header.stamp,
+  // geometry_msgs::msg::TransformStamped::ConstSharedPtr transform;
 
-  try {
-    transform = transform_listener_->getTransform(
-      odom_msg->header.frame_id, radar_msg->header.frame_id, odom_msg->header.stamp,
-      rclcpp::Duration::from_seconds(0.2));
-  } catch (tf2::TransformException & ex) {
-    RCLCPP_INFO(this->get_logger(), "Could not transform");
+  // try {
+  //   transform = transform_listener_->getTransform(
+  //     odom_msg->header.frame_id, radar_msg->header.frame_id, odom_msg->header.stamp,
+
+       rclcpp::Duration::from_seconds(0.2));
+  // } catch (tf2::TransformException & ex) {
+  //   RCLCPP_INFO(this->get_logger(), "Could not transform");
+
+  if (!transform) {
+    RCLCPP_WARN(this->get_logger(), "Could not transform");
     return;
   }
 
