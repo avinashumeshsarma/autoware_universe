@@ -11,7 +11,7 @@ find_package(autoware_cmake REQUIRED)
 autoware_package()
 
 # TODO(amadeuszsz): Remove -Wno-deprecated-declarations once removing implicit quantization
-add_compile_options(-Wno-deprecated-declarations)
+add_compile_options(-Wno-deprecated-declarations -Wno-error=unused-parameter)
 
 find_package(OpenCV REQUIRED)
 

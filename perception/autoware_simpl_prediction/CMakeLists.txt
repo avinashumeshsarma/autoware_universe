@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 project(autoware_simpl_prediction)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    add_compile_options(-Wall -Wextra -Wpedantic)
+    add_compile_options(-Wall -Wextra -Wpedantic -Wno-error=unused-parameter)
 endif()
 
 # --- find dependencies ---

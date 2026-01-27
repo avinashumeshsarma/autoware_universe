@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.17)
 project(autoware_tensorrt_bevdet)
 
-add_compile_options(-std=c++17)
+add_compile_options(-std=c++17 -Wno-error=unused-parameter)
 
 find_package(bevdet_vendor)
 if(NOT ${bevdet_vendor_FOUND})

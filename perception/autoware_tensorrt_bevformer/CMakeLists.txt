@@ -9,7 +9,7 @@ if(POLICY CMP0146)
   cmake_policy(SET CMP0146 OLD)
 endif()
 
-add_compile_options(-Wno-deprecated-declarations)
+add_compile_options(-Wno-deprecated-declarations -Wno-error=unused-parameter)
 
 option(CUDA_VERBOSE "Verbose output of CUDA modules" OFF)
 

@@ -63,10 +63,10 @@ endif()
 
 if(TRT_AVAIL AND CUDA_AVAIL AND CUDNN_AVAIL)
   # Add compile option to suppress deprecation warnings (optional)
-  add_compile_options(-Wno-deprecated-declarations)
+  add_compile_options(-Wno-deprecated-declarations -Wno-error=unused-parameter)
 
   # Suppress narrowing conversion warnings from TensorRT headers
-  add_compile_options(-Wno-narrowing)
+  add_compile_options(-Wno-narrowing -Wno-error=unused-parameter)
 
   # Add your component library
   ament_auto_add_library(autoware_diffusion_planner_component SHARED

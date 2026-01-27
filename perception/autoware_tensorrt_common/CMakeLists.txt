@@ -49,7 +49,7 @@ set_target_properties(${PROJECT_NAME}
 
 # TODO(amadeuszsz): Remove -Wno-deprecated-declarations once removing implicit quantization
 target_compile_options(${PROJECT_NAME} PRIVATE
-  -Wall -Wextra -Wpedantic -Werror -Wno-deprecated-declarations
+  -Wall -Wextra -Wpedantic -Werror -Wno-deprecated-declarations -Wno-error=unused-parameter
 )
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
